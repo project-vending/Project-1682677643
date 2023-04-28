@@ -1,0 +1,16 @@
+python
+import pandas as pd
+import os
+
+# Define file paths
+data_file = os.path.join("predictive_maintenance", "data", "machine_data.csv")
+cleaned_data_file = os.path.join("predictive_maintenance", "clean_data", "clean_machine_data.csv")
+
+# Load data into pandas DataFrame
+df = pd.read_csv(data_file)
+
+# Clean the data (e.g. remove duplicates, fill missing values, etc.)
+df_cleaned = ...
+
+# Save cleaned data to a new CSV file
+df_cleaned.to_csv(cleaned_data_file, index=False)
