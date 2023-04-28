@@ -1,0 +1,25 @@
+python
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+import pickle
+import os
+
+# Load machine data
+data_path = os.path.join("predictive_maintenance", "clean_data", "clean_machine_data.csv")
+df = pd.read_csv(data_path)
+
+# Define feature and target columns
+feature_cols = ["temperature", "pressure", "humidity"]
+target_col = "failure"
+
+# Split the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(df[feature_cols], df[target_col], test_size=0.3, random_state=42)
+
+# Fit a logistic regression model on the training set
+lr_model = LogisticRegression()
+lr_model.fit(X_train, y_train)
+
+# Save the trained model to a file
+model_path = os.path.join("predictive_maintenance", "models", "predictive_model.pkl")
+with open(model_path, "wb") as f:
+    pickle.dump(lr_model, f)
