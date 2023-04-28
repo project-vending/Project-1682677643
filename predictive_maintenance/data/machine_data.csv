@@ -1,0 +1,24 @@
+python
+import csv
+import os
+
+# Define path to machine_data.csv file
+data_path = os.path.join("predictive_maintenance", "data", "machine_data.csv")
+
+# Define column names
+column_names = ["machine_id", "sensor_1", "sensor_2", "sensor_3", "sensor_4"]
+
+# Define data rows
+data_rows = [
+    [1, 10.2, 20.3, 30.4, 40.5],
+    [2, 10.1, 20.2, 30.3, 40.4],
+    [3, 9.8, 19.7, 29.6, 39.5],
+    [4, 9.9, 19.9, 29.8, 39.9],
+    [5, 10.0, 20.0, 30.0, 40.0]
+]
+
+# Write data to CSV file
+with open(data_path, mode="w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerow(column_names)
+    writer.writerows(data_rows)
